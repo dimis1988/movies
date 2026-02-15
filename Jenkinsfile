@@ -5,22 +5,7 @@ pipeline {
         stage('Build') {
             agent {
                 docker {
-                    image 'ruby:3.2.2-alpine'
-                    reuseNode true
-                }    
-            }
-            steps {
-                sh '''
-                    echo "lets see github logs..."
-                    ls -la
-                    ruby --version
-                '''
-            }
-        }
-        stage('Deploy') {
-            agent {
-                docker {
-                    image 'ruby:3.2.2-alpine'
+                    image 'ruby:3.2.2'
                     reuseNode true
                 }    
             }
@@ -31,8 +16,25 @@ pipeline {
                     ruby --version
                     gem install bundler
                     bundle install
+                '''
+            }
+        }
+        stage('Deploy') {
+            agent {
+                docker {
+                    image 'ruby:3.2.2'
+                    reuseNode true
+                }    
+            }
+            steps {
+                sh '''
+                    echo "lets see github logs..."
+                    ls -la
+                    ruby --version
+                    gem install bundler
+                    bundle install
+                    bundle exec ruby movies.rb
                     sleep 10
-                    ruby movies.rb
                 '''
             }
         }
