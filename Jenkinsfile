@@ -17,7 +17,7 @@ pipeline {
                 '''
             }
         }
-        stage('Build') {
+        stage('Deploy') {
             agent {
                 docker {
                     image 'ruby:3.2.2-alpine'
