@@ -29,6 +29,7 @@ pipeline {
                     echo "lets see github logs..."
                     ls -la
                     ruby --version
+                    bundle install
                     sleep 10
                     ruby movies.rb
                 '''
