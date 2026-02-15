@@ -33,8 +33,6 @@ pipeline {
                     ruby --version
                     gem install bundler
                     bundle install
-                    bundle exec ruby movies.rb
-                    sleep 10
                 '''
             }
         }
