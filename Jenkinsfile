@@ -30,7 +30,7 @@ pipeline {
                 sh '''
                     test -f app.rb
                     bundle install
-                    bundle exec rake test
+                    bundle exec rspec
                 '''
             }
         }
