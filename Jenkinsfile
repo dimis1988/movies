@@ -2,9 +2,21 @@ pipeline {
     agent any
 
     stages {
-        stage('Hello') {
+        stage('Build') {
+            agent {
+                docker {
+                    image 'ruby:3.2.2'
+                    reuseNote true
+                }
+            }
             steps {
-                echo 'Hello World'
+                sh '''
+                    ls -la
+                    ruby --version
+                    bundler --version
+                    bundle install
+                    ls -la
+                '''
             }
         }
     }
