@@ -21,9 +21,8 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh '''
-                    sh 'test -f app.rb'
-                '''
+                sh 'test -f app.rb'
+
             }
         }
     }
