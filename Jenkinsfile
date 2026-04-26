@@ -6,7 +6,7 @@ pipeline {
             agent {
                 docker {
                     image 'ruby:3.2.2'
-                    reuseNote true
+                    reuseNode true
                 }
             }
             steps {
