@@ -20,9 +20,18 @@ pipeline {
             }
         }
         stage('Test') {
+            agent {
+                docker {
+                    image 'ruby:3.2.2'
+                    reuseNode true
+                }
+            }
             steps {
-                sh 'test -f app.rb'
-
+                sh '''
+                    test -f app.rb
+                    bundle install
+                    bundle exec rake test
+                '''
             }
         }
     }
