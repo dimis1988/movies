@@ -34,5 +34,19 @@ pipeline {
                 '''
             }
         }
+        stage('Deploy') {
+            agent {
+                docker {
+                    image 'ruby:3.2.2'
+                    reuseNode true
+                }
+            }
+            steps {
+                sh '''
+                    npm install -g netlify-cli
+                    netlify --version
+                '''
+            }
+        }
     }
 }
