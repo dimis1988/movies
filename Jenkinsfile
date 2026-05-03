@@ -43,7 +43,7 @@ pipeline {
             }
             steps {
                 sh '''
-                    
+                    git push origin master
                 '''
             }
         }
